@@ -14,7 +14,7 @@ const NavBar = () => {
             </div>
             <div className={styles.navbarCartContainer}>
                 <p className={styles.navbarTextAmount}>2</p>
-                <img src={Cart} alt="Icono de carrito" />
+                <img src={Cart} alt="cart icon" />
             </div>
         </div>
     )
