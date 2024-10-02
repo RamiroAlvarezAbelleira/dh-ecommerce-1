@@ -12,6 +12,13 @@ export interface Product {
     price:        number;
 }
 
+export interface CartProduct {
+    id: number,
+    name: string,
+    image: string,
+    quantity: number
+}
+
 export interface Release {
     au: string;
     eu: string;
