@@ -12,16 +12,17 @@ export interface Product {
     price:        number;
 }
 
-export interface CartProduct {
-    id: number,
-    name: string,
-    image: string,
-    quantity: number
-}
-
 export interface Release {
     au: string;
     eu: string;
     jp: string;
     na: string;
+}
+
+export interface CartProduct {
+    id: number,
+    name: string,
+    image: string,
+    quantity: number,
+    price: number
 }

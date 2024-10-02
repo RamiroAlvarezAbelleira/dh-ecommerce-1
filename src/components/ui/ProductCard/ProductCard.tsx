@@ -15,6 +15,7 @@ const ProductCard: FC<Props> = ({ product }) => {
         id: product.id,
         name: product.name,
         image: product.image,
+        price: product.price,
         quantity: 1
     }
 
@@ -29,7 +30,7 @@ const ProductCard: FC<Props> = ({ product }) => {
                 <h3 className={styles.cardTitle}>{product.name}</h3>
                 <div className={styles.cardBody}>
                     <p className={styles.cardType}>{product.type}</p>
-                    <p className={styles.cardPrice}>price, <small>00</small></p>
+                    <p className={styles.cardPrice}>price: <small>{product.price}</small></p>
 
                 </div>
                 <button className={styles.cardButton} onClick={() => addToCart(item)}>Add to cart</button>
