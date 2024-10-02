@@ -3,11 +3,11 @@ import Hero from "../../components/ui/Hero/Hero"
 import styles from "./Home.module.css"
 import ProductCard from "../../components/ui/ProductCard/ProductCard"
 import { getProducts } from "../../service"
-import { Products } from "../../interface"
+import { Product } from "../../interface"
 
 const Home = () => {
 
-  const [products, setProducts] = useState<Products[]>([])
+  const [products, setProducts] = useState<Product[]>([])
   const [error, setError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
