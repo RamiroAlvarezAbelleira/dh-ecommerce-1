@@ -1,3 +1,4 @@
+import CreditCard from "../../components/ui/CreditCard/CreditCard"
 import Table from "../../components/ui/Table/Table"
 import styles from "./Checkout.module.css"
 
@@ -10,7 +11,7 @@ const Checkout = () => {
           <Table />
         </div>
         <div>
-          {/* Form */}
+          <CreditCard />
         </div>
       </div>
     </div>
