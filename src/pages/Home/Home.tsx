@@ -1,15 +1,30 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { useQuery } from "react-query"
+import { Toaster } from "sonner"
 import Hero from "../../components/ui/Hero/Hero"
-import styles from "./Home.module.css"
 import ProductCard from "../../components/ui/ProductCard/ProductCard"
 import { getProducts } from "../../service"
-import { Product } from "../../interface"
-import { Toaster } from "sonner"
-import { useQuery } from "react-query"
+import styles from "./Home.module.css"
 
 const Home = () => {
 
-  const { data, isLoading, error} = useQuery('products', getProducts)
+  const [page, setPage] = useState(1)
+
+  const { data, isLoading, error } = useQuery(
+    ['products', page], 
+    () => getProducts(page), 
+    { keepPreviousData: true }
+  )
+
+  const handleNextPage = () => {
+    setPage(page + 1)
+  }
+
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1)
+    }
+  }
 
   return (
     <>
@@ -21,6 +36,26 @@ const Home = () => {
         {data?.map((prod) => {
           return <ProductCard key={prod.tail} product={prod} />
         })}
+      </div>
+      <div className={styles.paginationContainer}>
+        <button
+        className={styles.paginationButton}
+          onClick={handlePreviousPage}
+          disabled={page === 1}
+        >
+          prev
+        </button>
+        <div className={styles.paginationActive}>
+          <span>
+            {page}
+          </span>
+        </div>
+        <button
+        className={styles.paginationButton}
+          onClick={handleNextPage}
+        >
+          next
+        </button>
       </div>
     </>
   )
