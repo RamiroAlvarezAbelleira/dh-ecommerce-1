@@ -14,11 +14,16 @@ const Dashboard = () => {
         }
     }, [])
 
+    const handleLogOut = () => {
+        localStorage.removeItem('userLogin')
+        navigate("/login")
+    }
+
     return (
         <div className={styles.container}>
             <div>
                 <h1>Dashboard</h1>
-                <button>Log Out</button>
+                <button onClick={handleLogOut}>Log Out</button>
             </div>
             <form>
                 {/* Series */}
