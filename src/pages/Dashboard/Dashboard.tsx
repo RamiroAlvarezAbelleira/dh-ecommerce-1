@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import styles from "./Dashboard.module.css"
 import { useEffect, useState } from "react"
+import { useMutation } from "react-query"
+import { Product } from "../../interface"
+import { createProduct } from "../../service"
+import { toast, Toaster } from "sonner"
 
 const Dashboard = () => {
 
@@ -11,7 +15,7 @@ const Dashboard = () => {
         head: '',
         image: '',
         name: '',
-        release: '',
+        releaseDate: '',
         tail: '',
         type: '',
         price: 0
@@ -39,13 +43,32 @@ const Dashboard = () => {
         })
     }
 
+    const mutation = useMutation((newProduct: Product) => {
+        return createProduct(newProduct)
+    })
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(product)
+        mutation.mutate(product)
+
+        setProduct({
+            amiiboSeries: '',
+            character: '',
+            gameSeries: '',
+            head: '',
+            image: '',
+            name: '',
+            releaseDate: '',
+            tail: '',
+            type: '',
+            price: 0
+        })
+        toast.success('Product created Successfully')
     }
 
     return (
         <div className={styles.container}>
+            <Toaster richColors />
             <div>
                 <h1>Dashboard</h1>
                 <button onClick={handleLogOut}>Log Out</button>
@@ -119,12 +142,12 @@ const Dashboard = () => {
                 </div>
                 {/* Release */}
                 <div className={styles.formControlLogin}>
-                    <label htmlFor="release">Release date</label>
+                    <label htmlFor="releaseDate">Release date</label>
                     <input
                         type="date"
-                        name="release"
-                        id="release"
-                        value={product.release}
+                        name="releaseDate"
+                        id="releaseDate"
+                        value={product.releaseDate}
                         onChange={handleChange}
                         required />
                 </div>
