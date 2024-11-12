@@ -20,7 +20,7 @@ export interface Release {
 }
 
 export interface CartProduct {
-    id: number,
+    id?: number,
     name: string,
     image: string,
     quantity: number,

@@ -15,16 +15,16 @@ export const cartSlice = createSlice({
     reducers: {
         addToCart: (state: CartState, action: PayloadAction<CartProduct>) => {
             const { id } = action.payload;
-
+            console.log(action.payload)
             const existingItem = state.cartItems.find((item) => item.id == id)
 
             if (existingItem) {
-                state = {
+                return state = {
                     ...state,
                     cartItems: state.cartItems.map((item) => item.id === id ? { ...item, quantity: item.quantity + 1 } : item)
                 }
             } else {
-                state = {
+                return state = {
                     ...state,
                     cartItems: [...state.cartItems, action.payload]
                 }
@@ -36,19 +36,19 @@ export const cartSlice = createSlice({
             const existingItem = state.cartItems.find((item) => item.id == id)
 
             if (existingItem && existingItem.quantity > 1) {
-                state = {
+                return state = {
                     ...state,
                     cartItems: state.cartItems.map((item) => item.id === id ? { ...item, quantity: item.quantity - 1 } : item)
                 }
             } else {
-                state = {
+                return state = {
                     ...state,
                     cartItems: state.cartItems.filter((item) => item.id !== id)
                 }
             }
         },
         clearCart: (state: CartState) => {
-            state = {
+            return state = {
                 ...state,
                 cartItems: []
             }

@@ -1,8 +1,9 @@
 import { FC } from "react"
-import useCartContext from "../../../hooks/useCartContext"
 import { CartProduct, Product } from "../../../interface"
 import styles from "./ProductCard.module.css"
 import {toast} from "sonner"
+import { addToCart } from "../CartModal/cartSlice"
+import { useDispatch } from "react-redux"
 
 interface Props {
     product: Product
@@ -10,7 +11,7 @@ interface Props {
 
 const ProductCard: FC<Props> = ({ product }) => {
 
-    const { dispatch } = useCartContext()
+    const dispatch = useDispatch()
 
     const item: CartProduct = {
         id: product.id,
@@ -20,8 +21,8 @@ const ProductCard: FC<Props> = ({ product }) => {
         quantity: 1
     }
 
-    const addToCart = (item: CartProduct) => {
-        dispatch({ type: "ADD_TO_CART", payload: item })
+    const addToCartAction = (item: CartProduct) => {
+        dispatch(addToCart(item))
         toast.success("Product added to cart")
     }
 
@@ -35,7 +36,7 @@ const ProductCard: FC<Props> = ({ product }) => {
                     <p className={styles.cardPrice}>price: <small>{product.price}</small></p>
 
                 </div>
-                <button className={styles.cardButton} onClick={() => addToCart(item)}>Add to cart</button>
+                <button className={styles.cardButton} onClick={() => addToCartAction(item)}>Add to cart</button>
             </div>
         </div>
     )
