@@ -11,7 +11,7 @@ const NavBar = () => {
 
     const [showCartModal, setShowCartModal] = useState(false)
 
-    const { state: { cartItems } } = useCartContext()
+    // const { state: { cartItems } } = useCartContext()
 
     const navigate = useNavigate()
 
@@ -37,9 +37,9 @@ const NavBar = () => {
                 location.pathname !== "/checkout" &&
                 <>
                     <div className={styles.navbarCartContainer}>
-                        {cartItems.length > 0 &&
+                        {/* {cartItems.length > 0 &&
                             <p className={styles.navbarTextAmount}>{cartItems.length}</p>
-                        }
+                        } */}
                         <img src={Cart} alt="cart icon" onClick={handleShowCartModal} />
                     </div>
                     {

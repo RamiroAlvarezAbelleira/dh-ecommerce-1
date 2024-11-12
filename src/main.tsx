@@ -9,6 +9,8 @@ import Home from './pages/Home/Home.tsx'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Login from './pages/Login/Login.tsx'
 import Dashboard from './pages/Dashboard/Dashboard.tsx'
+import { Provider } from 'react-redux'
+import { store } from './store/index.ts'
 
 const queryClient = new QueryClient()
 
@@ -33,9 +35,11 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {/* <App /> */}
     <QueryClientProvider client={queryClient}>
-      <CartProvider>
+      {/* <CartProvider> */}
+      <Provider store={store}>
         <RouterProvider router={router} />
-      </CartProvider>
+      </Provider>
+      {/* </CartProvider> */}
     </QueryClientProvider>
   </StrictMode>,
 )

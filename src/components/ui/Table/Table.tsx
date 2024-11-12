@@ -1,17 +1,21 @@
-import useCartContext from "../../../hooks/useCartContext"
+import { useDispatch, useSelector } from "react-redux"
 import { CartProduct } from "../../../interface"
+import { IRootState } from "../../../store"
+import { addToCart, removeFromCart } from "../CartModal/cartSlice"
 import styles from "./Table.module.css"
 
 
 const Table = () => {
-  const { state: { cartItems }, dispatch } = useCartContext()
+  const dispatch = useDispatch()
 
-  const removeFromCart = (item: CartProduct) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: item })
+  const cartItems = useSelector((state:IRootState) => state.cartSlice.cartItems)
+  
+  const removeFromCartAction = (item: CartProduct) => {
+    dispatch(removeFromCart(item))
   }
 
-  const addToCart = (item: CartProduct) => {
-    dispatch({ type: "ADD_TO_CART", payload: item })
+  const addToCartAction = (item: CartProduct) => {
+    dispatch(addToCart(item))
   }
 
   const totalPay = () => {
@@ -42,7 +46,7 @@ const Table = () => {
                   <td>
                     <button
                       className={styles.modalButtonRemove}
-                      onClick={() => removeFromCart(item)}
+                      onClick={() => removeFromCartAction(item)}
                     >
                       -1
                     </button>
@@ -53,7 +57,7 @@ const Table = () => {
                   <td>
                     <button
                       className={styles.modalButtonAdd}
-                      onClick={() => addToCart(item)}
+                      onClick={() => addToCartAction(item)}
                     >
                       +1
                     </button>
