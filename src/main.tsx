@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard/Dashboard.tsx'
 import Home from './pages/Home/Home.tsx'
 import Login from './pages/Login/Login.tsx'
 import { store } from './store/index.ts'
+import { ThemeProvider } from './context/ThemeProvider.tsx'
 
 const queryClient = new QueryClient()
 
@@ -33,9 +34,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
+      <ThemeProvider>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </ThemeProvider>
     </QueryClientProvider>
   </StrictMode>,
 )

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { useLocation, useNavigate } from "react-router-dom"
 import Cart from "../../../assets/cart.svg"
 import Logo from "../../../assets/logo.svg"
+import useThemeContext from "../../../hooks/useThemeContext"
 import { IRootState } from "../../../store"
 import CartModal from "../CartModal/CartModal"
 import styles from "./NavBar.module.css"
@@ -11,6 +12,8 @@ import styles from "./NavBar.module.css"
 const NavBar = () => {
 
     const [showCartModal, setShowCartModal] = useState(false)
+
+    const {isDarkMode, setIsDarkMode} = useThemeContext()
 
     const cartItems = useSelector((state:IRootState) => state.cartSlice.cartItems)
 
@@ -26,6 +29,10 @@ const NavBar = () => {
         navigate("/")
     }
 
+    const handleDarkMode = () => {
+        setIsDarkMode(prev => !prev)
+    }
+
     return (
         <div className={styles.navbarContainer}>
             <div onClick={handleNavigateToHome} className={styles.navbarDetail}>
@@ -34,6 +41,7 @@ const NavBar = () => {
                     <span>DH Ecommerce</span>
                 </div>
             </div>
+            <button onClick={handleDarkMode}>{isDarkMode ? "lightMode" : "darkMode"}</button>
             {
                 location.pathname !== "/checkout" &&
                 <>

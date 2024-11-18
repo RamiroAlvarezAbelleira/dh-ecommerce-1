@@ -6,7 +6,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-    const [isDarkMode, setIsDarkMode] = useState(false)
+    const [isDarkMode, setIsDarkMode] = useState(true)
 
     return (
         <ThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
