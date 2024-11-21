@@ -1,7 +1,8 @@
 .heroContainer{
-    background-image: url("../../../assets/hero.png");
+    background-image: url("../../../assets/homeBackground.png");
       background-position: 50%;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       align-items: center;
   }
   
