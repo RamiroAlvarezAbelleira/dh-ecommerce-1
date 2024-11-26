@@ -7,15 +7,16 @@ import useThemeContext from "../../../hooks/useThemeContext"
 import { IRootState } from "../../../store"
 import CartModal from "../CartModal/CartModal"
 import styles from "./NavBar.module.css"
+import { ToggleSwitch } from "../ToggleSwitch"
 
 
 const NavBar = () => {
 
     const [showCartModal, setShowCartModal] = useState(false)
 
-    const {isDarkMode, setIsDarkMode} = useThemeContext()
+    const { isDarkMode, setIsDarkMode } = useThemeContext()
 
-    const cartItems = useSelector((state:IRootState) => state.cartSlice.cartItems)
+    const cartItems = useSelector((state: IRootState) => state.cartSlice.cartItems)
 
     const navigate = useNavigate()
 
@@ -41,23 +42,25 @@ const NavBar = () => {
                     <span>DH Ecommerce</span>
                 </div>
             </div>
-            <button onClick={handleDarkMode}>{isDarkMode ? "lightMode" : "darkMode"}</button>
-            {
-                location.pathname !== "/checkout" &&
-                <>
-                    <div className={styles.navbarCartContainer}>
-                        {cartItems.length > 0 &&
-                            <p className={styles.navbarTextAmount}>{cartItems.length}</p>
+            <div className={styles.cartAndDarkmodeContainer}>
+                <ToggleSwitch/>
+                <button onClick={handleDarkMode}>{isDarkMode ? "lightMode" : "darkMode"}</button>
+                {
+                    location.pathname !== "/checkout" &&
+                    <>
+                        <div className={styles.navbarCartContainer}>
+                            {cartItems.length > 0 &&
+                                <p className={styles.navbarTextAmount}>{cartItems.length}</p>
+                            }
+                            <img src={Cart} alt="cart icon" onClick={handleShowCartModal} />
+                        </div>
+                        {
+                            showCartModal && (<CartModal handleShowCartModal={handleShowCartModal} />)
                         }
-                        <img src={Cart} alt="cart icon" onClick={handleShowCartModal} />
-                    </div>
-                    {
-                        showCartModal && (<CartModal handleShowCartModal={handleShowCartModal} />)
-                    }
-                </>
+                    </>
 
-            }
-
+                }
+            </div>
         </div>
     )
 }

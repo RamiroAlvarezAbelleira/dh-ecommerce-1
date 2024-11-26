@@ -1,0 +1,33 @@
+.toggleButton {
+    display: block;
+    background-color: #d2d2d2;
+    width: 60px;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+.toggleButton::before {
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 24px;
+    height: 24px;
+    margin: 3px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+input:checked+.toggleButton {
+    background-color: blue;
+}
+
+.toggle:checked+.toggleButton::before {
+    transform: translateX(30px);
+}
+
+input {
+    display: none;
+}

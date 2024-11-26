@@ -8,12 +8,12 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    border: 6px solid #1c1c1c;
+    border: 6px solid #5a5a5a;
     transition: 0.3s border;
 }
 
 .cardContainer:hover {
-    border: 6px solid #4a4a4a;
+    border: 6px solid #3f3f3f ;
 }
 
 .cardContainer::before {
