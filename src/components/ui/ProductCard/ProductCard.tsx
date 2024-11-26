@@ -4,12 +4,15 @@ import styles from "./ProductCard.module.css"
 import {toast} from "sonner"
 import { addToCart } from "../CartModal/cartSlice"
 import { useDispatch } from "react-redux"
+import useThemeContext from "../../../hooks/useThemeContext"
 
 interface Props {
     product: Product
 }
 
 const ProductCard: FC<Props> = ({ product }) => {
+
+    const { isDarkMode } = useThemeContext()
 
     const dispatch = useDispatch()
 
@@ -27,7 +30,7 @@ const ProductCard: FC<Props> = ({ product }) => {
     }
 
     return (
-        <div className={styles.cardContainer}>
+        <div className={isDarkMode ? styles.cardContainerDark : styles.cardContainer }>
             <img className={styles.cardImage} src={product.image} alt={product.name} />
             <div className={styles.cardDetail}>
                 <h3 className={styles.cardTitle}>{product.name}</h3>

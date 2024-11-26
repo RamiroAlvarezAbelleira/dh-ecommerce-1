@@ -1,38 +1,46 @@
-.heroContainer{
-    background-image: url("../../../assets/homeBackground.png");
-      background-position: 50%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      align-items: center;
+.heroContainer {
+  background-image: url("../../../assets/homeBackground.png");
+  background-position: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-items: center;
+}
+
+.heroTitleContainer {
+  padding: 0px;
+  padding-top: 150px;
+  margin: auto;
+}
+
+.heroContainer h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+
+
+.heroContainer span {
+  color: #ffc107;
+}
+
+@media (min-width: 768px) {
+  .heroContainer {
+    background-position: 50%;
+    height: 100vh;
   }
-  
-  .heroTitleContainer{
+
+  .heroContainer h1 {
+    font-size: 5rem;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .heroTitleContainer {
     padding-top: 150px;
     padding-left: 200px;
   }
-  
-  @media (min-width: 768px) {
-    .heroContainer{
-      background-position: 50%;
-          height: 100vh;
-    }
-  }
-  
-  .heroContainer h1{
-    color: #fff;
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-align: center;
-      margin: 0;
-  }
-  
-  @media (min-width: 768px) {
-    .heroContainer h1{
-      font-size: 5rem;
-          text-align: left;
-    }
-  }
-  
-  .heroContainer span{
-    color: #ffc107;
-  }
+}

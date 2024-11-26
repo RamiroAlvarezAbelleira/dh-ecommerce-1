@@ -8,6 +8,12 @@
     justify-content: center;
     position: relative;
     width: 100%;
+    border: 6px solid #1c1c1c;
+    transition: 0.3s border;
+}
+
+.cardContainer:hover {
+    border: 6px solid #4a4a4a;
 }
 
 .cardContainer::before {
@@ -24,6 +30,41 @@
 }
 
 .cardContainer:hover::before {
+    clip-path: circle(300px at 80% -20%);
+}
+
+.cardContainerDark {
+    align-items: center;
+    background-color: #0a79fb;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    border: 6px solid #d1d1d1;
+    transition: 0.3s border;
+}
+
+.cardContainerDark:hover {
+    border: 6px solid #fff;
+}
+
+.cardContainerDark::before {
+    background: rgba(0 88 254 / 50%);
+    border-radius: 20px;
+    clip-path: circle(150px at 80% 20%);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: 0.5s ease-in-out;
+    width: 100%;
+}
+
+.cardContainerDark:hover::before {
     clip-path: circle(300px at 80% -20%);
 }
 
