@@ -1,4 +1,4 @@
-import { ReactNode, FC, useState } from "react"
+import { ReactNode, FC, useState, useEffect } from "react"
 import { ThemeContext } from "./ThemeContext"
 
 interface ThemeProviderProps {
@@ -6,7 +6,12 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-    const [isDarkMode, setIsDarkMode] = useState(true)
+    const theme = localStorage.getItem('theme')
+    const [isDarkMode, setIsDarkMode] = useState(theme === 'false' ? false : true)
+
+    useEffect(() => {
+        localStorage.setItem('theme', JSON.stringify(isDarkMode))
+    },[isDarkMode])
 
     return (
         <ThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>

@@ -1,7 +1,7 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
 interface ThemeContextType {
-    isDarkMode: Boolean,
+    isDarkMode: boolean,
     setIsDarkMode: Dispatch<SetStateAction<boolean>>
 }
 

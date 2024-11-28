@@ -13,7 +13,7 @@ export const DarkModeToggleSwitch = ({ handleChange }: Props) => {
     const { isDarkMode } = useThemeContext()
     return (
         <>
-            <input type="checkbox" name="toggle" id="toggle" className={styles.toggle} onChange={handleChange} />
+            <input type="checkbox" name="toggle" id="toggle" className={styles.toggle} onChange={handleChange} checked={isDarkMode} />
             <label htmlFor="toggle" className={styles.toggleButton}>
                 {isDarkMode ?
                     <GoSun className={styles.sunIcon} />

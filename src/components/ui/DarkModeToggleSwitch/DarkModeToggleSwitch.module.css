@@ -1,6 +1,6 @@
 .toggleButton {
     display: block;
-    background-color: #ffcc33;
+    background-color: #000053;
     width: 60px;
     height: 30px;
     border-radius: 20px;
@@ -13,14 +13,14 @@
     color: white;
     height: 100%;
     position: absolute;
-    right: 6px;
+    left: 6px;
 }
 
 .moonIcon {
     color: white;
     height: 100%;
     position: absolute;
-    left: 6px;
+    right: 6px;
 }
 
 .toggleButton::before {
@@ -35,7 +35,7 @@
 }
 
 input:checked+.toggleButton {
-    background-color: #000053;
+    background-color: #ffcc33;
 }
 
 .toggle:checked+.toggleButton::before {
