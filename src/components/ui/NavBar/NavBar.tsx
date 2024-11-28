@@ -7,14 +7,14 @@ import useThemeContext from "../../../hooks/useThemeContext"
 import { IRootState } from "../../../store"
 import CartModal from "../CartModal/CartModal"
 import styles from "./NavBar.module.css"
-import { ToggleSwitch } from "../ToggleSwitch"
+import { DarkModeToggleSwitch } from "../DarkModeToggleSwitch"
 
 
 const NavBar = () => {
 
     const [showCartModal, setShowCartModal] = useState(false)
 
-    const { isDarkMode, setIsDarkMode } = useThemeContext()
+    const { setIsDarkMode } = useThemeContext()
 
     const cartItems = useSelector((state: IRootState) => state.cartSlice.cartItems)
 
@@ -43,8 +43,7 @@ const NavBar = () => {
                 </div>
             </div>
             <div className={styles.cartAndDarkmodeContainer}>
-                <ToggleSwitch/>
-                <button onClick={handleDarkMode}>{isDarkMode ? "lightMode" : "darkMode"}</button>
+                <DarkModeToggleSwitch handleChange={handleDarkMode}/>
                 {
                     location.pathname !== "/checkout" &&
                     <>

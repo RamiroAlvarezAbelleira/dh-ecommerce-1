@@ -12,6 +12,7 @@
 
 .cartAndDarkmodeContainer {
   display: flex;
+  align-items: center;
 }
 
 .navbarDetail {
