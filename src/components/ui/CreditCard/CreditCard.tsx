@@ -1,11 +1,9 @@
 // import Cards from 'react-credit-cards';
+import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import styles from "./CreditCard.module.css"
-import React, { useState } from 'react';
-import { toast } from 'sonner'
-import useCartContext from '../../../hooks/useCartContext';
-import { CartProduct } from '../../../interface';
+import { toast } from 'sonner';
+import styles from "./CreditCard.module.css";
 
 const CreditCard = () => {
 
@@ -16,8 +14,6 @@ const CreditCard = () => {
         cvc: '',
         focus: ''
     })
-
-    const { dispatch } = useCartContext()
 
     const { number, name, expiry, cvc, focus } = cardData
 
@@ -51,9 +47,7 @@ const CreditCard = () => {
             focus: ''
         })
 
-        toast.success("Purchase completed successfully")    
-
-        dispatch({ type: "CLEAR_CART", payload: {} as CartProduct })
+        toast.success("Purchase completed successfully")
     }
 
 

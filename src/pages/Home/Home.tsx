@@ -5,6 +5,7 @@ import Hero from "../../components/ui/Hero/Hero"
 import ProductCard from "../../components/ui/ProductCard/ProductCard"
 import { getProducts } from "../../service"
 import styles from "./Home.module.css"
+import Pagination from "../../components/ui/Pagination/Pagination"
 
 const Home = () => {
 
@@ -37,26 +38,7 @@ const Home = () => {
           return <ProductCard key={prod.tail} product={prod} />
         })}
       </div>
-      <div className={styles.paginationContainer}>
-        <button
-        className={styles.paginationButton}
-          onClick={handlePreviousPage}
-          disabled={page === 1}
-        >
-          prev
-        </button>
-        <div className={styles.paginationActive}>
-          <span>
-            {page}
-          </span>
-        </div>
-        <button
-        className={styles.paginationButton}
-          onClick={handleNextPage}
-        >
-          next
-        </button>
-      </div>
+      <Pagination handleNextPage={handleNextPage} handlePreviousPage={handlePreviousPage} page={page} />
     </>
   )
 }
