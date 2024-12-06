@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import styles from "./Pagination.module.css"
+import useThemeContext from "../../../hooks/useThemeContext"
 
 interface PaginationProps {
     handlePreviousPage: () => void,
@@ -8,6 +9,9 @@ interface PaginationProps {
 }
 
 const Pagination = ({ handlePreviousPage, handleNextPage, page }: PaginationProps) => {
+
+    const { isDarkMode } = useThemeContext()
+
     return (
         <div className={styles.paginationContainer}>
             <button
@@ -17,7 +21,7 @@ const Pagination = ({ handlePreviousPage, handleNextPage, page }: PaginationProp
             >
                 prev
             </button>
-            <div className={styles.paginationActive}>
+            <div className={isDarkMode ? styles.paginationActiveDark : styles.paginationActiveLight}>
                 <span>
                     {page}
                 </span>
