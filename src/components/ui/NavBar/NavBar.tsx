@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useLocation, useNavigate } from "react-router-dom"
-import Cart from "../../../assets/cart.svg"
 import Logo from "../../../assets/logo.svg"
 import useThemeContext from "../../../hooks/useThemeContext"
 import { IRootState } from "../../../store"
 import CartModal from "../CartModal/CartModal"
 import styles from "./NavBar.module.css"
 import { DarkModeToggleSwitch } from "../DarkModeToggleSwitch"
+import CartIcon from "../CartIcon/CartIcon"
 
 
 const NavBar = () => {
@@ -15,8 +15,6 @@ const NavBar = () => {
     const [showCartModal, setShowCartModal] = useState(false)
 
     const { setIsDarkMode } = useThemeContext()
-
-    const cartItems = useSelector((state: IRootState) => state.cartSlice.cartItems)
 
     const navigate = useNavigate()
 
@@ -47,12 +45,7 @@ const NavBar = () => {
                 {
                     location.pathname !== "/checkout" &&
                     <>
-                        <div className={styles.navbarCartContainer}>
-                            {cartItems.length > 0 &&
-                                <p className={styles.navbarTextAmount}>{cartItems.length}</p>
-                            }
-                            <img src={Cart} alt="cart icon" onClick={handleShowCartModal} />
-                        </div>
+                        <CartIcon handleShowCartModal={handleShowCartModal} />
                         {
                             showCartModal && (<CartModal handleShowCartModal={handleShowCartModal} />)
                         }
