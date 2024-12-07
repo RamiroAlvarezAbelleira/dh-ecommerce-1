@@ -1,13 +1,11 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
 import { useLocation, useNavigate } from "react-router-dom"
 import Logo from "../../../assets/logo.svg"
 import useThemeContext from "../../../hooks/useThemeContext"
-import { IRootState } from "../../../store"
-import CartModal from "../CartModal/CartModal"
-import styles from "./NavBar.module.css"
-import { DarkModeToggleSwitch } from "../DarkModeToggleSwitch"
 import CartIcon from "../CartIcon/CartIcon"
+import CartModal from "../CartModal/CartModal"
+import { DarkModeToggleSwitch } from "../DarkModeToggleSwitch"
+import styles from "./NavBar.module.css"
 
 
 const NavBar = () => {
