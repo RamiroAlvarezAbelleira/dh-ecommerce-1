@@ -1,4 +1,4 @@
-import { ReactNode, FC, useState, useEffect } from "react"
+import { ReactNode, FC, useState, useEffect, useCallback } from "react"
 import { ThemeContext } from "./ThemeContext"
 
 interface ThemeProviderProps {
@@ -13,8 +13,10 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
         localStorage.setItem('theme', JSON.stringify(isDarkMode))
     },[isDarkMode])
 
+    const handleDarkModeToggle = useCallback(() => { setIsDarkMode(state => !state) },[])
+
     return (
-        <ThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
+        <ThemeContext.Provider value={{ isDarkMode, handleDarkModeToggle }}>
             {children}
         </ThemeContext.Provider>
     )

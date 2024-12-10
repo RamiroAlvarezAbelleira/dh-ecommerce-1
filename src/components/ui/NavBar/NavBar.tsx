@@ -12,7 +12,7 @@ const NavBar = () => {
 
     const [showCartModal, setShowCartModal] = useState(false)
 
-    const { setIsDarkMode } = useThemeContext()
+    const { handleDarkModeToggle } = useThemeContext()
 
     const navigate = useNavigate()
 
@@ -26,10 +26,6 @@ const NavBar = () => {
         navigate("/")
     }
 
-    const handleDarkMode = () => {
-        setIsDarkMode(prev => !prev)
-    }
-
     return (
         <div className={styles.navbarContainer}>
             <div onClick={handleNavigateToHome} className={styles.navbarDetail}>
@@ -39,7 +35,7 @@ const NavBar = () => {
                 </div>
             </div>
             <div className={styles.cartAndDarkmodeContainer}>
-                <DarkModeToggleSwitch handleChange={handleDarkMode}/>
+                <DarkModeToggleSwitch handleChange={handleDarkModeToggle}/>
                 {
                     location.pathname !== "/checkout" &&
                     <>
